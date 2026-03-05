@@ -51,7 +51,6 @@ class SessionCubit extends Cubit<SessionState> {
   }
 
   Future<void> login({required String email, required String password}) async {
-    // Сначала сбрасываем предыдущие ошибки
     emit(state.copyWith(isLoading: true, error: null));
 
     try {
@@ -182,8 +181,18 @@ class SessionCubit extends Cubit<SessionState> {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('user_language', languageCode);
-      emit(state.copyWith(selectedLanguage: languageCode, error: null));
+
+      emit(
+        state.copyWith(
+          selectedLanguage: languageCode,
+          isAuthenticated: false,
+          isLoading: false,
+          error: null,
+        ),
+      );
+
       debugPrint('✅ Language saved: $languageCode');
+      debugPrint('🔍 After language select: needsAuth=${state.needsAuth}');
     } catch (e) {
       debugPrint('❌ Error saving language: $e');
       emit(state.copyWith(error: 'Failed to save language: $e'));

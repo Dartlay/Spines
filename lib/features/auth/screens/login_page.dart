@@ -73,7 +73,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       listener: (context, state) {
         if (state.isAuthenticated) {
           debugPrint('✅ Login successful, navigating to home');
-
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           context.go(AppRoutes.home.path);
           return;
@@ -83,23 +82,27 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             state.error != null &&
             state.error!.isNotEmpty) {
           debugPrint('❌ Login failed: ${state.error}');
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Row(
-                children: [
-                  const Icon(Icons.error_outline, color: Colors.white),
-                  const SizedBox(width: 8),
-                  Expanded(child: Text(state.error!)),
-                ],
-              ),
-              backgroundColor: AppColors.error,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              margin: const EdgeInsets.all(16),
-            ),
-          );
+          Future.delayed(const Duration(milliseconds: 100), () {
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Row(
+                    children: [
+                      const Icon(Icons.error_outline, color: Colors.white),
+                      const SizedBox(width: 8),
+                      Expanded(child: Text(state.error!)),
+                    ],
+                  ),
+                  backgroundColor: AppColors.error,
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  margin: const EdgeInsets.all(16),
+                ),
+              );
+            }
+          });
         }
       },
       child: AuthPageWrapper(
