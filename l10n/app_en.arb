@@ -117,7 +117,9 @@
   "publicationYear": "Publication year",
   "minRating": "Minimum rating",
   "sort": "Sort",
-  "show": "Show"
+  "show": "Show",
+  
+  "loading": "Loading..."
 
 
 }

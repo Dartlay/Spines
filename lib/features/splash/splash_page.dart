@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spines/core/bloc/session/session_cubit.dart';
+import 'package:spines/core/localization/s.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -11,14 +12,14 @@ class SplashPage extends StatelessWidget {
 
     debugPrint('🏁 SplashPage build, isLoading: ${sessionState.isLoading}');
 
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text('Загрузка...'),
+            Text(context.tr.loading),
           ],
         ),
       ),

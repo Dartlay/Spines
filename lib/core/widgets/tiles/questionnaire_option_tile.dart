@@ -7,7 +7,7 @@ class QuestionnaireOptionTile extends StatelessWidget {
   final VoidCallback onTap;
   final Color? backgroundColor;
   final Color? unselectedColor;
-  final Color? selectedTextColor; // ← НОВЫЙ ПАРАМЕТР
+  final Color? selectedTextColor;
   final Color? unselectedTextColor;
   final bool useBoldForSelected;
   final EdgeInsetsGeometry? padding;

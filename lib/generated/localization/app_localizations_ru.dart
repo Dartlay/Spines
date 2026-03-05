@@ -343,4 +343,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get show => 'Показать';
+
+  @override
+  String get loading => 'Загрузка...';
 }

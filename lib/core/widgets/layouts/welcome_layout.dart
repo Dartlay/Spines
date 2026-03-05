@@ -31,7 +31,6 @@ class WelcomeLayout extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Заголовок
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
               child: Row(

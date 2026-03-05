@@ -342,4 +342,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get show => 'Show';
+
+  @override
+  String get loading => 'Loading...';
 }
